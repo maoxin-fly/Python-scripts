@@ -1,0 +1,24 @@
+def process_arg(argv):
+   path = 'data/data_prepare/Step4/'
+   parsName = 'Initial_Pars_mu_KD'
+   try:
+       # ':' 表示i和o后面要接参数，而h后面没有参数 ，hio是选项，[]里面是参数列表， = 代表附加参数
+      opts, args = getopt.getopt(argv,"hp:n:",["path=","parsName="])
+   except getopt.GetoptError:
+      print ('DC7_Sort_Results.py -p <path> -n <parsName>')
+      sys.exit(2)
+   for opt, arg in opts:
+      if opt == '-h':
+         print ('DC7_Sort_Results.py -p <path> -n <parsName>')
+         sys.exit()
+      elif opt in ("-p", "--path"):
+         path = arg
+      elif opt in ("-n", "--parsName"):
+         parsName = arg
+         
+   print ('File directory is：', path)
+   print('parsName is:',parsName)
+   return path,parsName
+
+if __name__ == "__main__":
+    path,parsName= process_arg(sys.argv[1:])
